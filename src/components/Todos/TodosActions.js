@@ -1,20 +1,25 @@
 import { RiDeleteBin2Line, RiRefreshLine } from 'react-icons/ri'
-import { useContext } from 'react'
-import { TodoContext } from '../../context'
+import { useDispatch } from 'react-redux'
+import { deleteCompletedTodo, resetTodo } from '../../store/todos/todos-actions'
+
 
 import Button from '../UI/Button'
 
 import styles from './TodosActions.module.css'
 
 function TodosActions({ completedTodoExist }) {
-	const { deleteCompletedTodosHandler, resetTodosHandler } = useContext(TodoContext)
+	const dispatch = useDispatch()
 
 	return (
 		<div className={styles.todosActionsContainer}>
-			<Button title="Reset Todos" onClick={resetTodosHandler}>
+			<Button title="Reset Todos" onClick={() => dispatch(resetTodo())}>
 				<RiRefreshLine />
 			</Button>
-			<Button title="Clear Complete Todos" onClick={deleteCompletedTodosHandler} disabled={!completedTodoExist}>
+			<Button
+				title="Clear Complete Todos"
+				onClick={() => dispatch(deleteCompletedTodo())}
+				disabled={!completedTodoExist}
+			>
 				<RiDeleteBin2Line />
 			</Button>
 		</div>

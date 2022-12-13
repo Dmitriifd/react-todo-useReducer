@@ -1,12 +1,12 @@
+import { useSelector } from 'react-redux'
 import TodoList from './components/Todos/TodoList'
 import TodoForm from './components/Todos/TodoForm'
 import TodosActions from './components/Todos/TodosActions'
-import { TodoContext } from './context'
-import { useContext } from 'react'
+import { selectAllTodos } from './store/todos/todos-selectors'
 import './App.css'
 
 function App() {
-	const { todos } = useContext(TodoContext)
+	const todos = useSelector(selectAllTodos)
 	const completedTodosCount = todos.filter((todo) => todo.isCompleted).length
 
 	return (

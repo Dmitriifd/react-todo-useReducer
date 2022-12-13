@@ -1,16 +1,16 @@
-import { useContext, useState } from 'react'
-import { TodoContext } from '../../context'
+import { useState } from 'react'
 import Button from '../UI/Button'
-
+import { useDispatch } from 'react-redux'
 import styles from './TodoForm.module.css'
+import { addTodo } from '../../store/todos/todos-actions'
 
 function TodoForm() {
-	const { addTodoHandler } = useContext(TodoContext)
+	const dispatch = useDispatch()
 	const [text, setText] = useState('')
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault()
-		addTodoHandler(text)
+		dispatch(addTodo(text))
 		setText('')
 	}
 
