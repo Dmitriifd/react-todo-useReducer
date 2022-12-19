@@ -2,7 +2,8 @@ import { useState } from 'react'
 import Button from '../UI/Button'
 import { useDispatch } from 'react-redux'
 import styles from './TodoForm.module.css'
-import { addTodo } from '../../store/todos/todos-actions'
+import { addTodo } from 'store/todoSlice'
+
 
 function TodoForm() {
 	const dispatch = useDispatch()
